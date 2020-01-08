@@ -22,12 +22,6 @@
             cancelButtonText: '取消',
             type: 'warning'
           }).then(() => {
-            var date = new Date(this.formInline.checkTime)
-            var y = date.getFullYear()
-            var d = date.getMonth() + 1
-            var dd = d < 10 ? '0' + d : d
-            var r = date.getDate()
-            var dateValue = y + '-' + dd + '-' + r
             if (dateValue === '1970-01-1') {
               dateValue = ''
             }
