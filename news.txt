@@ -5,7 +5,59 @@
 
 
 
+刊部分不是的借款部分啥都看不见打卡呗v
+
 
 砥砺初心 习近平这些话饱含奋进力量
 失事客机起飞后即停发数据 “带红光下坠”|乌克兰坠毁客机成火球
 伊朗驻华大使:若美回击 伊朗报复将是决定性的|安倍取消中东之行
+
+
+
+    save () {
+      this.$refs.formInline.validate((valid) => {
+        if (valid) {
+          this.$confirm('是否保存当前信息', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            if (dateValue === '1970-01-1') {
+              dateValue = ''
+            }
+            saveintraacceptcheckApi({
+              checkContent: this.formInline.checkContent,
+              objectId: this.objectId,
+              checkTime: dateValue,
+              checkResult: this.formInline.checkResult,
+              attachmentId: '654321',
+              attachmentName: 'tongguole',
+              minutes: 'sdds',
+              ids: this.attachmentIds
+            })
+              .then(res => {
+                // 绑定子组件的权限树
+                console.log(res)
+                this.$message({
+                  type: 'success',
+                  message: '保存成功!'
+                })
+              })
+              .catch(err => {
+                console.log(err)
+              })
+          }).catch(() => {
+            this.$message({
+              type: 'info',
+              message: '已取消保存'
+            })
+          })
+        } else {
+          this.$message({
+            type: 'error',
+            message: '请填写必填信息'
+          })
+        }
+      })
+    },
+
